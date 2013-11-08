@@ -1,0 +1,41 @@
+<?xml version="1.0" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" 
+"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg id="svgfeld" onload='graphshit()' xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<script type="text/ecmascript"><![CDATA[
+    var svgns = "http://www.w3.org/2000/svg";
+    
+    function getRGB()
+    {
+        var k = 0xCC;
+        var c = 0xFF;
+        
+        var theta = Math.random()*Math.PI/2;
+        var dist = Math.floor(Math.random()*c);
+        
+        var x = Math.cos(theta)*dist;
+        var y = Math.sin(theta)*dist;
+        
+        //var z = Math.floor(Math.abs(y-Math.random())*c);
+        var blub = document.createElementNS(svgns, "line");
+        blub.setAttributeNS(null, "stroke", "red");
+        blub.setAttributeNS(null, "stroke-width", "1px");
+        blub.setAttributeNS(null, "x1", x);
+        blub.setAttributeNS(null, "y1", 255-y);
+        blub.setAttributeNS(null, "x2", x+1);
+        blub.setAttributeNS(null, "y2", 255-y);
+        document.getElementById('graph').appendChild(blub);
+    }
+    
+    function graphshit()
+    {
+        for(var i=0; i<9999; i++)
+            getRGB();
+        document.getElementById('graph').setAttributeNS(null, "transform", "translate(10,10)");
+    }
+]]></script>
+<g id="graph">
+    <line x1="255" y1="255" x2="0" y2="255" stroke="black"/>
+    <line x1="0" y1="255" x2="0" y2="0" stroke="black"/>
+</g>
+</svg>
